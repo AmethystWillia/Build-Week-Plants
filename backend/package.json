@@ -4,7 +4,10 @@
   "description": "Dependencies and scripts",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
