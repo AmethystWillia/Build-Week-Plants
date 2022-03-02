@@ -1,0 +1,34 @@
+{
+  "name": "build-week",
+  "version": "1.0.0",
+  "description": "Dependencies and scripts",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.95.14",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.10.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmethystWillia/Build-Week-Plants.git"
+  },
+  "author": "Amethyst Willia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmethystWillia/Build-Week-Plants/issues"
+  },
+  "homepage": "https://github.com/AmethystWillia/Build-Week-Plants#readme"
+}
