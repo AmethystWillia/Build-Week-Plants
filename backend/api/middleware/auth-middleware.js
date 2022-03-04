@@ -45,17 +45,25 @@ const checkUsernameExists = async (req, res, next) => {
             req.user = user;
             next();
         }
-        
+
     } catch (err) {
         next(err);
     }
 };
 
-const checkPasswordLength = (req, res, next) => {};
+const validateInput = (req, res, next) => {
+    const { username, password } = req.body;
+
+    if (!username || !password || !username.trim() || !password.trim()) {
+        res.status(422).json({ meesage: 'Warning: Username and password are required to sign up!' });
+    } else {
+        next();
+    }
+};
 
 module.exports = {
     restricted,
     checkUsernameFree,
     checkUsernameExists,
-    checkPasswordLength,
+    validateInput,
 };
