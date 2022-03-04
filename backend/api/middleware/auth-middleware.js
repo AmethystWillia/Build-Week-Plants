@@ -19,7 +19,21 @@ const restricted = (req, res, next) => {
     }
 };
 
-const checkUsernameFree = async (req, res, next) => {};
+const checkUsernameFree = async (req, res, next) => {
+    try {
+        const [user] = await Users.getBy({ username: req.body.username });
+
+        if (user) {
+            res.status(422).json({ message: 'Warning: Username already taken!' });
+        } else {
+            req.user = user;
+            next();
+        }
+
+    } catch (err) {
+        next(err);
+    }
+};
 
 const checkUsernameExists = async (req, res, next) => {
     try {
@@ -31,6 +45,7 @@ const checkUsernameExists = async (req, res, next) => {
             req.user = user;
             next();
         }
+        
     } catch (err) {
         next(err);
     }
