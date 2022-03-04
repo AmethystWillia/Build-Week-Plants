@@ -1,17 +1,27 @@
+const router = require('express').Router();
+
 const Users = require('../users/users-model');
+
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../secrets');
 
-const restricted = (req, res, next) => {};
+// [POST] /api/auth/register
+router.post('/register', (req, res, next) => {});
 
-const checkUsernameFree = async (req, res, next) => {};
+// [POST] /api/auth/login
+router.post('/login', (req, res, next) => {});
 
-const checkUsernameExists = async (req, res, next) => {};
+const makeToken = (user) => {
+    const payload = {
+        subject: user.user_id,
+        username: user.username,
+    };
+    const options = {
+        expiresin: 'id'
+    };
 
-const checkPasswordLength = (req, res, next) => {};
-
-module.exports = {
-    restricted,
-    checkUsernameFree,
-    checkUsernameExists,
-    checkPasswordLength,
+    return jwt.sign(payload, JWT_SECRET, options);
 };
+
+module.exports = router;
