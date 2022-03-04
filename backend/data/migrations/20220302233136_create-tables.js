@@ -10,12 +10,11 @@ exports.up = function(knex) {
         plants.string('scientific_name', 30).notNullable().unique();
         plants.string('common_name', 50).notNullable().unique();
         plants.string('nickname', 50);
-        plants.string('common_name', 50).notNullable().unique();
         plants.integer('water_frequency').notNullable();
         plants.integer('user_id')
             .unsigned()
             .notNullable()
-            .references('user_id').inTable('users')
+            .references('user_id').inTable('users');
     });
 };
 
