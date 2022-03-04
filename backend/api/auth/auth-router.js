@@ -7,7 +7,20 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = require('../secrets');
 
 // [POST] /api/auth/register
-router.post('/register', (req, res, next) => {});
+router.post('/register', (req, res, next) => {
+    const { username, password } = req.body;
+    const hash = bcrypt.hashSync(password, 8);
+
+    Users.add({ username, password: hash })
+        .then(user => {
+            res.status(201).json({
+                id: user.user_id,
+                username: user.username,
+                password: user.password,
+            });
+        })
+        .catch(next);
+});
 
 // [POST] /api/auth/login
 router.post('/login', (req, res, next) => {});
