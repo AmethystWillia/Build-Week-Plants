@@ -11,7 +11,13 @@ router.get('/', (req, res, next) => {
 });
 
 // [GET] /api/plants/:plant_id
-router.get('/:plant_id', (req, res, next) => {});
+router.get('/:plant_id', (req, res, next) => {
+    Plants.getById(req.params.plant_id)
+        .then(plant => {
+            res.json(plant);
+        })
+        .catch(next);
+});
 
 // [POST] /api/plants
 router.post('/', (req, res, next) => {});
