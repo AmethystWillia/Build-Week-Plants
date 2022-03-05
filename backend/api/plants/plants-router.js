@@ -40,6 +40,12 @@ router.put('/:plant_id', (req, res, next) => {
 });
 
 // [DELETE] /api/plants/:plant_id
-router.delete('/:plant_id', (req, res, next) => {});
+router.delete('/:plant_id', (req, res, next) => {
+    Plants.delPlant(req.params.plant_id)
+        .then(plant => {
+            res.json(plant);
+        })
+        .catch(next);
+});
 
 module.exports = router;

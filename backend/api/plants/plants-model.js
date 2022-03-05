@@ -1,3 +1,4 @@
+const { get } = require('express/lib/response');
 const db = require('../../data/dbConfig');
 
 const getAll = () => {
@@ -25,10 +26,14 @@ const update = async (plant_id, changes) => {
     return getById(plant_id);
 };
 
-const delPlant = (plant_id) => {
-    return db('pants')
-        .wwhere({ plant_id })
+const delPlant = async (plant_id) => {
+    const result = await getById(plant_id)
+
+    await db('plants')
+        .where({plant_id})
         .del();
+    
+    return {result};
 };
 
 module.exports = {
