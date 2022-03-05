@@ -2,7 +2,13 @@ const router = require('express').Router();
 const Plants = require('./plants-model');
 
 // [GET] /api/plants
-router.get('/', (req, res, next) => {});
+router.get('/', (req, res, next) => {
+    Plants.getAll()
+        .then(all => {
+            res.json(all);
+        })
+        .catch(next);
+});
 
 // [GET] /api/plants/:plant_id
 router.get('/:plant_id', (req, res, next) => {});
