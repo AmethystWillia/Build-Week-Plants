@@ -1,4 +1,3 @@
-const { get } = require('express/lib/response');
 const db = require('../../data/dbConfig');
 
 const getAll = () => {
