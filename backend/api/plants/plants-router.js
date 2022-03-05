@@ -20,7 +20,13 @@ router.get('/:plant_id', (req, res, next) => {
 });
 
 // [POST] /api/plants
-router.post('/', (req, res, next) => {});
+router.post('/', (req, res, next) => {
+    Plants.makePlant(req.body)
+        .then(newPlant => {
+            res.status(201).json(newPlant);
+        })
+        .catch(next);
+});
 
 // [PUT] /api/plants
 router.put('/', (req, res, next) => {});
