@@ -28,8 +28,16 @@ router.post('/', (req, res, next) => {
         .catch(next);
 });
 
-// [PUT] /api/plants
-router.put('/', (req, res, next) => {});
+// [PUT] /api/plants/:plant_id
+router.put('/:plant_id', (req, res, next) => {
+    const {plant_id} = req.params;
+
+    Plants.update(plant_id, req.body)
+        .then(plant => {
+            res.json(plant);
+        })
+        .catch(next);
+});
 
 // [DELETE] /api/plants/:plant_id
 router.delete('/:plant_id', (req, res, next) => {});
