@@ -13,6 +13,12 @@ router.get('/', restricted, (req, res, next) => {
 });
 
 // [GET] /api/users/:user_id
-router.get('/:user_id', (req, res, next) => {});
+router.get('/:user_id', restricted, (req, res, next) => {
+    Users.getById(req.params.user_id)
+        .then(user => {
+            res.json(user);
+        })
+        .catch(next);
+});
 
 module.exports = router;
