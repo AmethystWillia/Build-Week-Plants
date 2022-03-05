@@ -6,7 +6,7 @@ const restricted = (req, res, next) => {
     const token = req.headers.authorization;
 
     if (!token) {
-        res.status(401).json({ message: 'Warning: Token required! '});
+        res.status(401).json({ message: 'Warning: Token required!' });
     } else {
         jwt.verify(token, JWT_SECRET, (err, decodedToken) => {
             if (err) {
