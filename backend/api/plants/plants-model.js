@@ -17,16 +17,22 @@ const makePlant = async (plant) => {
     return getById(id);
 };
 
-const update = (plant_id, changes) => {
-    return db('plants')
+const update = async (plant_id, changes) => {
+    await db('plants')
         .where({ plant_id })
         .update(changes);
+
+    return getById(plant_id);
 };
 
-const delPlant = (plant_id) => {
-    return db('pants')
-        .wwhere({ plant_id })
+const delPlant = async (plant_id) => {
+    const result = await getById(plant_id)
+
+    await db('plants')
+        .where({plant_id})
         .del();
+    
+    return {result};
 };
 
 module.exports = {
